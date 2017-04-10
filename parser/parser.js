@@ -21,11 +21,24 @@ if (SouthIslandList.length === 0) throw new Error('無法在 source 中找到南
 DiaoyutaiList.forEach(item => { item.City = '宜蘭縣'; });
 SouthIslandList.forEach(item => { item.City = '高雄市'; });
 
-parseResults.forEach(item => { item.Zip3 = item.Zip5.substr(0,3); });
+parseResults.forEach(item => { 
+  item.Zip3 = item.Zip5.substr(0,3);
+  item.forUniq = `${item.City}-${item.Area}`;
+});
+
+/**
+ * 移除郵政例外 (路段跨區) Zip5 時不應刪除
+ * 260 宜蘭縣壯圍鄉(大多是263)
+ * 300 新竹縣寶山鄉(大多是308)
+ * 741 臺南市新市區(大多是744)
+ */
+_.remove(parseResults, { Zip3: '260', forUniq: '宜蘭縣-壯圍鄉'});
+_.remove(parseResults, { Zip3: '300', forUniq: '新竹縣-寶山鄉'});
+_.remove(parseResults, { Zip3: '741', forUniq: '臺南市-新市區'});
 
 const counties = _.uniqBy(parseResults, 'City').map(item => ({ id: item.City, name: item.City }));
 console.log(`共計將轉出城市一共有 ${counties.length} 筆資料。`);
-const zipcodes = _.uniqBy(parseResults, 'Zip3').map(item => ({ id: item.Zip3, county: item.City, city: item.Area }));
+const zipcodes = _.uniqBy(parseResults, 'forUniq').map(item => ({ id: item.Zip3, county: item.City, city: item.Area }));
 console.log(`共計將轉出市鄉鎮區一共有 ${zipcodes.length} 筆資料。`);
 
 let countiesString = `/*

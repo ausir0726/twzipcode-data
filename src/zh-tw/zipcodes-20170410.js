@@ -1,6 +1,6 @@
 /*
 data-sourece is Zip32_10601.xml 
-created at 2017-04-10 00:31:24 
+created at 2017-04-10 19:53:11 
 */
 module.exports = [
   { id: 100, county: '臺北市', city: '中正區' },
@@ -69,6 +69,8 @@ module.exports = [
   { id: 272, county: '宜蘭縣', city: '南澳鄉' },
   { id: 290, county: '宜蘭縣', city: '釣魚臺' },
   { id: 300, county: '新竹市', city: '東區' },
+  { id: 300, county: '新竹市', city: '北區' },
+  { id: 300, county: '新竹市', city: '香山區' },
   { id: 302, county: '新竹縣', city: '竹北市' },
   { id: 303, county: '新竹縣', city: '湖口鄉' },
   { id: 304, county: '新竹縣', city: '新豐鄉' },
@@ -182,6 +184,7 @@ module.exports = [
   { id: 557, county: '南投縣', city: '竹山鎮' },
   { id: 558, county: '南投縣', city: '鹿谷鄉' },
   { id: 600, county: '嘉義市', city: '西區' },
+  { id: 600, county: '嘉義市', city: '東區' },
   { id: 602, county: '嘉義縣', city: '番路鄉' },
   { id: 603, county: '嘉義縣', city: '梅山鄉' },
   { id: 604, county: '嘉義縣', city: '竹崎鄉' },

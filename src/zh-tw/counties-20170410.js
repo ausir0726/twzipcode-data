@@ -1,6 +1,6 @@
 /*
 data-sourece is Zip32_10601.xml 
-created at 2017-04-10 00:31:24 
+created at 2017-04-10 19:53:11 
 */
 module.exports = [
   { id: '臺北市', name: '臺北市' },
